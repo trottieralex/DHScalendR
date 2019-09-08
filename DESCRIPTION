@@ -15,3 +15,5 @@ Suggests:
 VignetteBuilder: knitr
 Imports: 
     lubridate
+URL: https://github.com/trottieralex/DHScalendR
+BugReports: https://github.com/trottieralex/DHScalendR/issues
