@@ -4,7 +4,7 @@
 #'
 #' @param x is a numerical CMC date format
 #'
-#' @return date in Date format
+#' @return date as a Date format
 #' @export
 #'
 #' @import lubridate
