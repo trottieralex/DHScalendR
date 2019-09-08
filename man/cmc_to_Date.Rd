@@ -10,7 +10,7 @@ cmc_to_Date(x)
 \item{x}{is a numerical CMC date format}
 }
 \value{
-date in Date format
+date as a Date format
 }
 \description{
 Transform CMC Format to Date Format
