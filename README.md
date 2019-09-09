@@ -25,9 +25,10 @@ adoption)
 
 <!-- You can install the released version of DHScalendR from [CRAN](https://CRAN.R-project.org) with: -->
 
+To install the current version of this package:
+
 ``` r
-library(DHScalendR)
-# devtools::install_github("")
+devtools::install_github("trottieralex/DHScalendR")
 ```
 
 ## Transform CMC date format
@@ -38,19 +39,34 @@ interpretable. These function make the transfer CMC from/to Date and
 years as decimal straigthforward.
 
 ``` r
+library(DHScalendR)
+
 
 # The Date of the Teharan declaration:
-cmc_to_Date(761) #1963-05-01
+cmc_to_Date(761)
 #> [1] "1963-05-01"
-cmc_from_Date(as.Date("1963-05-13")) #761
+cmc_from_Date(as.Date("1963-05-13")) #Show following warning the 1st time
 #> Note: method with signature 'Timespan#Timespan' chosen for function '%/%',
 #>  target signature 'Interval#Period'.
 #>  "Interval#ANY", "ANY#Period" would also be valid
 #> [1] 761
 
+
 # or for April 19, 1989
-cmc_to_Year(1072) #1989.25
+cmc_to_Year(1072)
 #> [1] 1989.25
-cmc_from_Year(1989.296) #1072
+cmc_from_Year(1989.296)
 #> [1] 1072
+```
+
+## Data
+
+This package also contains a small exemple dataset extracted from a DHS
+model dataset.
+
+``` r
+data <- dhs_extract
+head(data)
+
+?dhs_extract
 ```

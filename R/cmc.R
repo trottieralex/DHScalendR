@@ -56,6 +56,7 @@ cmc_to_Year <- function(x){
 #' @export
 #'
 #' @examples
+#' #Will run warning the first time
 #' cmc_from_Year(1989.296) #1072
 #'
 cmc_from_Year <- function(x){

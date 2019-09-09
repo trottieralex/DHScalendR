@@ -16,6 +16,7 @@ date in a CMC format
 Transform Years to CMC Format
 }
 \examples{
+#Will run warning the first time
 cmc_from_Year(1989.296) #1072
 
 }
