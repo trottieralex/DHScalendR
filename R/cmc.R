@@ -8,7 +8,7 @@
 #' @export
 #'
 #' @import lubridate
-#'
+#' @import Rcpp
 #'
 #' @examples
 #' cmc_to_Date(761) #1963-05-01

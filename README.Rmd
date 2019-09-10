@@ -20,10 +20,10 @@ knitr::opts_chunk$set(
 The goal of DHScalendR is to make the use of the DHS calendar easier to use in R. **This package is currently being developped**, but it already contains functions to:
 
 * Deal with CMC date format (back and forth)
+* Split Calendar into months columns
 
 Next additions will include ways to:
 
-* Decomposition of the calendar string to months
 * Recoding of the calendar
 * Measure of specified events (i.e. contraceptive failure or post-partum adoption)
 
@@ -38,6 +38,18 @@ To install the current version of this package:
 devtools::install_github("trottieralex/DHScalendR")
 ```
 
+
+## Data
+
+This package contains a small exemple dataset extracted from a DHS model dataset.
+
+```{r, eval=FALSE}
+data <- dhs_extract
+head(data)
+?dhs_extract
+```
+
+
 ## Transform CMC date format
 
 The DHS widely use CMC format date (number of month counting from January 1900). A format often convenient for analysis, but hardly interpretable. These function make the transfer CMC from/to Date and years as decimal straigthforward. 
@@ -45,11 +57,9 @@ The DHS widely use CMC format date (number of month counting from January 1900).
 ```{r example}
 library(DHScalendR)
 
-
 # The Date of the Teharan declaration:
 cmc_to_Date(761)
 cmc_from_Date(as.Date("1963-05-13")) #Show following warning the 1st time
-
 
 # or for April 19, 1989
 cmc_to_Year(1072)
@@ -57,14 +67,16 @@ cmc_from_Year(1989.296)
 
 ```
 
-## Data
 
-This package also contains a small exemple dataset extracted from a DHS model dataset.
+## Split DHS calendar
 
-```{r, eval=FALSE}
-data <- dhs_extract
-head(data)
+This function divides the DHS calendar from a data frame into month columns that are added to the said data frame under the name: "CMCx" + [CMC date of the month] 
+```{r}
+dataset <- dhs_extract[95:100, c("V008", "V025", "VCAL.1")]
 
-?dhs_extract
+dataset_plus_CMCx <- calendar_split(dataset, "V008", "VCAL.1")
+
+dataset_plus_CMCx[ ,1:10]
+
 ```
 
