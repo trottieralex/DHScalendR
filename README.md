@@ -13,10 +13,11 @@ contains functions to:
 
   - Deal with CMC date format (back and forth)
   - Split Calendar into months columns
+  - Recoding of the calendar
 
 Next additions will include ways to:
 
-  - Recoding of the calendar
+  - Performe common operations
   - Measure of specified events (i.e. contraceptive failure or
     post-partum
 adoption)
@@ -34,12 +35,18 @@ devtools::install_github("trottieralex/DHScalendR")
 ## Data
 
 This package contains a small exemple dataset extracted from a DHS model
-dataset.
+dataset, and also a codebook to recode the calendar. The later is
+primarily to use with the calendar\_recode function, but is available
+for consultation or use.
 
 ``` r
+# Exemple dataset
 data <- dhs_extract
 head(data)
 ?dhs_extract
+
+# Calendar codebook
+head(dhs_calendar_codebook)
 ```
 
 ## Transform CMC date format
@@ -68,7 +75,7 @@ cmc_from_Year(1989.296)
 #> [1] 1072
 ```
 
-## Split DHS calendar
+## Split and recode DHS calendar
 
 This function divides the DHS calendar from a data frame into month
 columns that are added to the said data frame under the name: “CMCx” +
@@ -77,9 +84,9 @@ columns that are added to the said data frame under the name: “CMCx” +
 ``` r
 dataset <- dhs_extract[95:100, c("V008", "V025", "VCAL.1")]
 
-dataset_plus_CMCx <- calendar_split(dataset, "V008", "VCAL.1")
-
-dataset_plus_CMCx[ ,1:10]
+#Dividing months into columns
+dataset <- calendar_split(dataset, "V008", "VCAL.1")
+(dataset <- dataset[ ,1:10])
 #>   V008  V025
 #> 3 1387 Rural
 #> 2 1387 Rural
@@ -101,4 +108,13 @@ dataset_plus_CMCx[ ,1:10]
 #> 6        P        P        P        P        P        B        0
 #> 1        0        0        0        0        0        0        0
 #> 4        P        P        P        P        P        B        0
+
+#Recoding of calendar months
+calendar_recode(dataset$CMCx1326)
+#> [1] "Pregnancy" "Birth"     "Non-use"   "Birth"     "Non-use"   "Birth"
+calendar_recode(c("0","0","P","P","P","T","A","A","A","A","3","3","3"), 
+                recoding = "modern_DHS6")
+#>  [1] "None"        "None"        "Pregnant"    "Pregnant"    "Pregnant"   
+#>  [6] "Pregnant"    "Traditional" "Traditional" "Traditional" "Traditional"
+#> [11] "Modern"      "Modern"      "Modern"
 ```

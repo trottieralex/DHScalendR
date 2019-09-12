@@ -21,10 +21,11 @@ The goal of DHScalendR is to make the use of the DHS calendar easier to use in R
 
 * Deal with CMC date format (back and forth)
 * Split Calendar into months columns
+* Recoding of the calendar
 
 Next additions will include ways to:
 
-* Recoding of the calendar
+* Performe common operations
 * Measure of specified events (i.e. contraceptive failure or post-partum adoption)
 
 
@@ -68,15 +69,20 @@ cmc_from_Year(1989.296)
 ```
 
 
-## Split DHS calendar
+## Split and recode DHS calendar
 
 This function divides the DHS calendar from a data frame into month columns that are added to the said data frame under the name: "CMCx" + [CMC date of the month] 
 ```{r}
 dataset <- dhs_extract[95:100, c("V008", "V025", "VCAL.1")]
 
+#Dividing months
 dataset_plus_CMCx <- calendar_split(dataset, "V008", "VCAL.1")
+(dataset_plus_CMCx <- dataset_plus_CMCx[ ,1:10])
 
-dataset_plus_CMCx[ ,1:10]
+#Recoding of calendar months
+calendar_recode(dataset_plus_CMCx$CMCx1326)
+calendar_recode(c("0","0","P","P","P","T","A","A","A","A","3","3","3"), 
+                recoding = "modern_DHS6")
 
 ```
 
