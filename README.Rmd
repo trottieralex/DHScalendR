@@ -42,12 +42,16 @@ devtools::install_github("trottieralex/DHScalendR")
 
 ## Data
 
-This package contains a small exemple dataset extracted from a DHS model dataset.
+This package contains a small exemple dataset extracted from a DHS model dataset, and also a codebook to recode the calendar. The later is primarily to use with the calendar_recode function, but is available for consultation or use.
 
 ```{r, eval=FALSE}
+# Exemple dataset
 data <- dhs_extract
 head(data)
 ?dhs_extract
+
+# Calendar codebook
+head(dhs_calendar_codebook)
 ```
 
 
@@ -55,12 +59,12 @@ head(data)
 
 The DHS widely use CMC format date (number of month counting from January 1900). A format often convenient for analysis, but hardly interpretable. These function make the transfer CMC from/to Date and years as decimal straigthforward. 
 
-```{r example}
+```{r echo=TRUE}
 library(DHScalendR)
 
 # The Date of the Teharan declaration:
 cmc_to_Date(761)
-cmc_from_Date(as.Date("1963-05-13")) #Show following warning the 1st time
+cmc_from_Date(as.Date("1963-05-13")) #Show warning the 1st time
 
 # or for April 19, 1989
 cmc_to_Year(1072)
@@ -75,12 +79,12 @@ This function divides the DHS calendar from a data frame into month columns that
 ```{r}
 dataset <- dhs_extract[95:100, c("V008", "V025", "VCAL.1")]
 
-#Dividing months
-dataset_plus_CMCx <- calendar_split(dataset, "V008", "VCAL.1")
-(dataset_plus_CMCx <- dataset_plus_CMCx[ ,1:10])
+#Dividing months into columns
+dataset <- calendar_split(dataset, "V008", "VCAL.1")
+(dataset <- dataset[ ,1:10])
 
 #Recoding of calendar months
-calendar_recode(dataset_plus_CMCx$CMCx1326)
+calendar_recode(dataset$CMCx1326)
 calendar_recode(c("0","0","P","P","P","T","A","A","A","A","3","3","3"), 
                 recoding = "modern_DHS6")
 

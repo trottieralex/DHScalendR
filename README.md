@@ -62,7 +62,7 @@ library(DHScalendR)
 # The Date of the Teharan declaration:
 cmc_to_Date(761)
 #> [1] "1963-05-01"
-cmc_from_Date(as.Date("1963-05-13")) #Show following warning the 1st time
+cmc_from_Date(as.Date("1963-05-13")) #Show warning the 1st time
 #> Note: method with signature 'Timespan#Timespan' chosen for function '%/%',
 #>  target signature 'Interval#Period'.
 #>  "Interval#ANY", "ANY#Period" would also be valid
