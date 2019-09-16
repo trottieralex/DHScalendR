@@ -4,8 +4,8 @@
 \alias{calendar_recode}
 \title{Recode Data - DHS Calendar}
 \usage{
-calendar_recode(x, recodebook = dhs_calendar_codebook, code = "Recode",
-  recoding = "Meaning")
+calendar_recode(x, recodebook = DHScalendR::dhs_calendar_codebook,
+  code = "Recode", recoding = "Meaning")
 }
 \arguments{
 \item{x}{is a vector of encoded data}
@@ -16,11 +16,14 @@ calendar_recode(x, recodebook = dhs_calendar_codebook, code = "Recode",
 
 \item{recoding}{name column of recodebook with meaning of the code (character)}
 }
+\value{
+recoded vector x
+}
 \description{
 Recode Data - DHS Calendar
 }
 \examples{
-events <- c("0","0","P","P","P","T","0","0","0","1","3","3","3")
+events <- c("0","0","P","P","P","T","A","A","A","A","3","3","3")
 calendar_recode(events)
 
 }

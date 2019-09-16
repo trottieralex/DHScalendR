@@ -6,7 +6,7 @@
 #' @param code name column of recodebook with the code of x (character)
 #' @param recoding name column of recodebook with meaning of the code (character)
 #'
-#' @return
+#' @return recoded vector x
 #' @export
 #'
 #' @examples
@@ -14,7 +14,7 @@
 #' calendar_recode(events)
 #'
 calendar_recode <- function(x,
-                            recodebook = dhs_calendar_codebook,
+                            recodebook = DHScalendR::dhs_calendar_codebook,
                             code = "Recode",
                             recoding = "Meaning"){
 

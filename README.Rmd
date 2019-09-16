@@ -22,11 +22,14 @@ The goal of DHScalendR is to make the use of the DHS calendar easier to use in R
 * Deal with CMC date format (back and forth)
 * Split Calendar into months columns
 * Recoding of the calendar
+* Subset using dates (CMC)
+* Check for combination of events (e.g. postpartum FP use = Birth & )
 
 Next additions will include ways to:
 
-* Performe common operations
-* Measure of specified events (i.e. contraceptive failure or post-partum adoption)
+* Locate events
+* *NB. Also need better documentation and further tests.*
+* *NB. The type of input will also evolve by version 0.3.0*
 
 
 ## Installation
@@ -75,7 +78,8 @@ cmc_from_Year(1989.296)
 
 ## Split and recode DHS calendar
 
-This function divides the DHS calendar from a data frame into month columns that are added to the said data frame under the name: "CMCx" + [CMC date of the month] 
+The split function divides the DHS calendar from a data frame into month columns that are added to the said data frame under the name: "CMCx" + [CMC date of the month].
+Once split, the recode function coud be use to obtain more meaning full labels or classification.
 ```{r}
 dataset <- dhs_extract[95:100, c("V008", "V025", "VCAL.1")]
 
@@ -85,8 +89,41 @@ dataset <- calendar_split(dataset, "V008", "VCAL.1")
 
 #Recoding of calendar months
 calendar_recode(dataset$CMCx1326)
-calendar_recode(c("0","0","P","P","P","T","A","A","A","A","3","3","3"), 
+calendar_recode(c("1","0","P","P","P","T","A","A","A","A","3","3","3"), 
                 recoding = "modern_DHS6")
 
+```
+
+## Subset by dates
+
+A simple way to subset the DHS calendar for a predefined period of time.
+
+```{r}
+
+dataset <- DHScalendR::dhs_extract[5:9, ]
+
+# Request first half of 2014
+calendar_subset(calendar = dataset$VCAL.1, 
+                interview = dataset$V008, 
+                starting = 1381, 
+                ending = cmc_from_Date(as.Date("2015-06-30")))
+
+```
+
+
+## Check for combination of events
+
+Look for any event2 that hapenned X months or less after any event1.
+
+```{r}
+
+example <- c("333000TPPP", "000000BPPP", "0000LLLBPPP")
+fp <- dhs_calendar_codebook$Recode[dhs_calendar_codebook$modern_DHS6 == "Modern"]
+
+# Check if use any modern FP in the 6 months after end pregnancy
+calendar_combo(calendar = example, 
+               event1 = c("B", "T"), 
+               n_months = 6,
+               event2 = fp) 
 ```
 
