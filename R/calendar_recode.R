@@ -10,7 +10,7 @@
 #' @export
 #'
 #' @examples
-#' events <- c("0","0","P","P","P","T","A","A","A","A","3","3","3")
+#' events <- c("0","0","P","P","T","A","A", NA, "X", "3","3")
 #' calendar_recode(events)
 #'
 calendar_recode <- function(x,
@@ -34,7 +34,11 @@ calendar_recode <- function(x,
 
     x <- ifelse(x %in% code,
                 recoding[match(x, code)],
-                "Missing")
+                ifelse(is.na(x),
+                       NA,
+                       paste("Missing code:", x)
+                       )
+                )
 
     return(x)
 }

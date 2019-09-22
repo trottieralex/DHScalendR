@@ -23,7 +23,7 @@ recoded vector x
 Recode Data - DHS Calendar
 }
 \examples{
-events <- c("0","0","P","P","P","T","A","A","A","A","3","3","3")
+events <- c("0","0","P","P","T","A","A", NA, "X", "3","3")
 calendar_recode(events)
 
 }
