@@ -15,7 +15,8 @@ contains functions to:
   - Split Calendar into months columns
   - Recoding of the calendar
   - Subset using dates (CMC)
-  - Check for combination of events (e.g. postpartum FP use = Birth & )
+  - Check for combination of events (e.g. postpartum FP use = Birth &
+    any contraception)
 
 Next additions will include ways to:
 

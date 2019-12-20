@@ -23,7 +23,7 @@ The goal of DHScalendR is to make the use of the DHS calendar easier to use in R
 * Split Calendar into months columns
 * Recoding of the calendar
 * Subset using dates (CMC)
-* Check for combination of events (e.g. postpartum FP use = Birth & )
+* Check for combination of events (e.g. postpartum FP use = Birth & any contraception)
 
 Next additions will include ways to:
 
