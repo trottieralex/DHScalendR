@@ -10,4 +10,5 @@ dhs_calendar_codebook <- read.csv("../DHScalendar_codebook.csv",
                                   stringsAsFactors = FALSE)
 
 usethis::use_data(dhs_calendar_codebook,
-                  overwrite = TRUE)
+                  overwrite = TRUE,
+                  compress = "xz")

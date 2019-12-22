@@ -1,5 +1,6 @@
 
 #' Recode Data - DHS Calendar
+#' Similar to VLOOKUP in Excel, but by default designed for DHS calendar codes
 #'
 #' @param x is a vector of encoded data
 #' @param recodebook is a data frame containings information about code
@@ -10,7 +11,7 @@
 #' @export
 #'
 #' @examples
-#' events <- c("0","0","P","P","T","A","A", NA, "X", "3","3")
+#' events <- c("0","0","P","P","T","A","A", NA, "Wrong_CodeX", "3","3")
 #' calendar_recode(events)
 #'
 calendar_recode <- function(x,

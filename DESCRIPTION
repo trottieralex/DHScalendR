@@ -1,10 +1,10 @@
 Package: DHScalendR
 Type: Package
 Title: Use Demographic Health Survey Calendar Variables
-Version: 0.2.1
+Version: 0.2.2
 Author: Alexandre Trottier <alexandre.trottier2@mail.mcgill.ca>
 Maintainer: Alexandre Trottier <alexandre.trottier2@mail.mcgill.ca>
-Description: Propose functions to make DHS calendar easier to use.
+Description: Provide functions to make DHS calendar easier to use.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true

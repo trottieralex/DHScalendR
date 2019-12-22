@@ -2,7 +2,8 @@
 % Please edit documentation in R/calendar_recode.R
 \name{calendar_recode}
 \alias{calendar_recode}
-\title{Recode Data - DHS Calendar}
+\title{Recode Data - DHS Calendar
+Similar to VLOOKUP in Excel, but by default designed for DHS calendar codes}
 \usage{
 calendar_recode(x, recodebook = DHScalendR::dhs_calendar_codebook,
   code = "Recode", recoding = "Meaning")
@@ -21,9 +22,10 @@ recoded vector x
 }
 \description{
 Recode Data - DHS Calendar
+Similar to VLOOKUP in Excel, but by default designed for DHS calendar codes
 }
 \examples{
-events <- c("0","0","P","P","T","A","A", NA, "X", "3","3")
+events <- c("0","0","P","P","T","A","A", NA, "Wrong_CodeX", "3","3")
 calendar_recode(events)
 
 }

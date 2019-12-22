@@ -30,4 +30,5 @@ dhs_extract <- dd[sample(1:nrow(dd), 100), ]
 
 
 usethis::use_data(dhs_extract,
-                  overwrite = TRUE)
+                  overwrite = TRUE,
+                  compress = "xz")

@@ -3,9 +3,9 @@
 #' Check if Combinaison Events
 #'
 #' @param calendar string(s) of calendar, months in original order (i.e. recent -> older)
-#' @param event1 code(s) of the first event(s) (older)
+#' @param event1 code(s) of the earlier event(s) of interest (older)
 #' @param n_months number of months between events (numerical)
-#' @param event2 code(s) of the second event(s) (recent)
+#' @param event2 code(s) of the later event(s) of interest (recent)
 #'
 #' @return wheter or not each calendar items contain the combination of events
 #' @export
