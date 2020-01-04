@@ -1,11 +1,13 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# DHScalendR
-
 <!-- badges: start -->
 
+[![Travis build
+status](https://travis-ci.com/trottieralex/DHScalendR.svg?branch=master)](https://travis-ci.org/trottieralex/DHScalendR)
 <!-- badges: end -->
+
+# DHScalendR
 
 The goal of DHScalendR is to make the use of the DHS calendar easier to
 use in R. **This package is currently being developped**, but it already
