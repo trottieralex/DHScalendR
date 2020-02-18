@@ -16,6 +16,7 @@ VignetteBuilder: knitr
 Imports: 
     lubridate,
     Rcpp,
-    reshape2
+    reshape2,
+    stringr
 URL: https://github.com/trottieralex/DHScalendR
 BugReports: https://github.com/trottieralex/DHScalendR/issues

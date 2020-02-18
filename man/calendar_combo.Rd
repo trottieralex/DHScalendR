@@ -2,26 +2,26 @@
 % Please edit documentation in R/calendar_combo.R
 \name{calendar_combo}
 \alias{calendar_combo}
-\title{Check if Combinaison Events}
+\title{Check if Combination of Events (aka. pattern)}
 \usage{
 calendar_combo(calendar, event1, n_months, event2)
 }
 \arguments{
 \item{calendar}{string(s) of calendar, months in original order (i.e. recent -> older)}
 
-\item{event1}{code(s) of the earlier event(s) of interest (older)}
+\item{event1}{code(s) of the earlier/older event(s) of interest}
 
 \item{n_months}{number of months between events (numerical)}
 
-\item{event2}{code(s) of the later event(s) of interest (recent)}
+\item{event2}{code(s) of the later/recent event(s) of interest}
 }
 \value{
 wheter or not each calendar items contain the combination of events
 }
 \description{
-Check if Combinaison Events
+Check if Combination of Events (aka. pattern)
 }
 \examples{
-dat_calendar <- c("333000BPPP", "000000BPPP")
+dat_calendar <- c("333000BPPP", "000000BPPP", "32100000000BPP", "56700ABC")
 calendar_combo(calendar = dat_calendar, event1 = "B", n_months = 6, event2 = c(1:9))
 }
