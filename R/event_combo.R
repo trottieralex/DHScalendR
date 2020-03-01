@@ -1,8 +1,7 @@
 
-
-#' Check if Combination of Events (aka. pattern)
+#' Check if Combination of Events in calendar
 #'
-#' @param calendar string(s) of calendar, months in original order (i.e. recent -> older)
+#' @param calendar string(s) of DHS calendar, months in original order (i.e. recent -> older)
 #' @param event1 code(s) of the earlier/older event(s) of interest
 #' @param n_months number of months between events (numerical)
 #' @param event2 code(s) of the later/recent event(s) of interest
@@ -13,7 +12,7 @@
 #' @examples
 #' dat_calendar <- c("333000BPPP", "000000BPPP", "32100000000BPP", "56700ABC")
 #' calendar_combo(calendar = dat_calendar, event1 = "B", n_months = 6, event2 = c(1:9))
-calendar_combo <- function(calendar, event1, n_months, event2){
+event_combo <- function(calendar, event1, n_months, event2){
     #Check validity of inputs
     if( !(is.character(calendar) | is.factor(calendar)) ){
         stop("Calendar object should contain characters or factors.")
