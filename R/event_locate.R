@@ -3,10 +3,10 @@
 #'
 #' @param calendar string(s) of DHS calendar, months in original order (i.e. recent -> older)
 #' @param event code(s) of event of interest (can take regex)
-#' @param sequences look for sequence of event - if FALSE individual events
-#' @param recent_oldest return location most recent or the oldest event in the calendar
-#' @param start_end return location of the start or the end of the event
-#' @param interview variable of the date of interview
+#' @param sequences look for sequence of event - if FALSE individual events [default: TRUE]
+#' @param recent_oldest return location most recent or the oldest event in the calendar [default: "recent"]
+#' @param start_end return location of the start or the end of the event [default: "start"]
+#' @param interview variable of the date of interview [default: 0]
 #'
 #' @return
 #' @export
@@ -19,7 +19,6 @@ event_locate <- function(calendar,
                          start_end = "start",
                          interview = 0
                          ){
-
     #Check for correct inputs
     if(length(recent_oldest) != 1 | length(start_end) != 1){
         stop("recent_oldest and start_end
@@ -32,7 +31,6 @@ event_locate <- function(calendar,
     if(!start_end %in% c("start", "end")){
         stop("start_end must be either 'start' or 'end'")
     }
-
     #Prepare data and get index of event
     if(recent_oldest == "recent"){
         #Prepare calendar
@@ -49,10 +47,8 @@ event_locate <- function(calendar,
         output <- str_locate(calendar, event)[ ,start_end]
         output <- nchar(calendar) + 1 - output
     }
-
     #Transform index into month
     output <- interview - output
-
     #Return value
     return(output)
 }
