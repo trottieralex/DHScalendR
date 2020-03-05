@@ -8,20 +8,25 @@
 #' @param start_end return location of the start or the end of the event [default: "start"]
 #' @param interview variable of the date of interview [default: 0]
 #'
+#' @importFrom stringr str_locate
 #' @return
 #' @export
 #'
 #' @examples
-#' dat_calendar <- c("333000BPPP", "333000TPPP000", "012305670")
+#' dat_calendar <- c("3300000BPP", "5000TPP111", "0123005670")
 #' event_locate(dat_calendar, "P")
 #' event_locate(dat_calendar, "P", sequences = FALSE)
+#' event_locate(dat_calendar, 0)
+#' event_locate(dat_calendar, 0, recent_oldest = "oldest")
+#' event_locate(dat_calendar, 0, recent_oldest = "oldest", start_end = "end")
+#' event_locate(dat_calendar, 0, interview = c(0, 10, 100))
 event_locate <- function(calendar,
                          event,
                          sequences = TRUE,
                          recent_oldest = "recent",
                          start_end = "start",
                          interview = 0
-                         )
+                         ){
     #Check for correct inputs
     if(!is.logical(sequences)){
         stop("Wrong value for argument sequences (TRUE/FALSE)")
@@ -32,6 +37,10 @@ event_locate <- function(calendar,
     if(!start_end %in% c("start", "end")){
         stop("start_end must be either 'start' or 'end'")
     }
+    # Edit event input
+    event <- ifelse(sequences,
+                    paste0(event, "+"),
+                    event)
     #Prepare data and get index of event
     if(recent_oldest == "recent"){
         #Prepare calendar
@@ -42,7 +51,7 @@ event_locate <- function(calendar,
     }
     if(recent_oldest == "oldest"){
         calendar <- trimws(sapply(
-            lapply(strsplit(dd, NULL), rev), paste, collapse="")
+            lapply(strsplit(calendar, NULL), rev), paste, collapse="")
             )
         start_end <- ifelse(start_end == "start",1,2)
         output <- str_locate(calendar, event)[ ,start_end]

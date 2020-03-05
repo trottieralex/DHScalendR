@@ -11,7 +11,7 @@
 #' @importFrom stringr str_count
 #'
 #' @examples
-#' dat_calendar <- c("333000BPPP", "333000TPPP000", "012305670")
+#' dat_calendar <- c("3300000BPP", "5000TPP111", "0123005670")
 #' event_count(dat_calendar, 0)
 #' event_count(dat_calendar, "0", sequences = FALSE)
 event_count <- function(calendar,
@@ -37,3 +37,4 @@ event_count <- function(calendar,
         str_count(trimws(calendar),
                   event))
 }
+

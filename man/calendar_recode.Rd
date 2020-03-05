@@ -5,8 +5,12 @@
 \title{Recode Data - DHS Calendar
 Similar to VLOOKUP in Excel, but by default designed for DHS calendar codes}
 \usage{
-calendar_recode(x, recodebook = DHScalendR::dhs_calendar_codebook,
-  code = "Recode", recoding = "Meaning")
+calendar_recode(
+  x,
+  recodebook = DHScalendR::dhs_calendar_codebook,
+  code = "Recode",
+  recoding = "Meaning"
+)
 }
 \arguments{
 \item{x}{is a vector of encoded data}
