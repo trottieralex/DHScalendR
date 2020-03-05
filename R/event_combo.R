@@ -10,8 +10,9 @@
 #' @export
 #'
 #' @examples
-#' dat_calendar <- c("333000BPPP", "000000BPPP", "32100000000BPP", "56700ABC")
-#' calendar_combo(calendar = dat_calendar, event1 = "B", n_months = 6, event2 = c(1:9))
+#' dat_calendar <- c("3300000BPP", "5000TPP111", "0123005670")
+#' event_combo(calendar = dat_calendar, event1 = "P", n_months = 6, event2 = c(1:9))
+#' event_combo(calendar = dat_calendar, event1 = "P", n_months = 4, event2 = c(1:9))
 event_combo <- function(calendar, event1, n_months, event2){
     #Check validity of inputs
     if( !(is.character(calendar) | is.factor(calendar)) ){
@@ -45,7 +46,7 @@ event_combo <- function(calendar, event1, n_months, event2){
 #' @param event1 code(s) of the earlier/older event(s) of interest
 #' @param n_months number of months between events (numerical)
 #' @param event2 code(s) of the later/recent event(s) of interest
-#' @param output chose if return "event1", "event2" or the whole "pattern" detected (default: "pattern")
+#' @param output chose if return "event1", "event2" or the whole "pattern" detected [default: "pattern"]
 #'
 #' @importFrom stringr str_extract
 #'
@@ -53,13 +54,13 @@ event_combo <- function(calendar, event1, n_months, event2){
 #' @export
 #'
 #' @examples
-#' dat_calendar <- c("333000BPPP", "000000BPPP", "32100000000BPP", "56700ABC")
-#' calendar_combo_extract(calendar = dat_calendar,
-#' event1 = "B", n_months = 6, event2 = c(1:9))
-#' calendar_combo_extract(calendar = dat_calendar,
-#' event1 = "B", n_months = 6, event2 = c(1:9),
+#' dat_calendar <- c("3300000BPP", "5000TPP111", "0123005670")
+#' event_combo_extract(calendar = dat_calendar,
+#' event1 = c("B", "T"), n_months = 6, event2 = c(1:9))
+#' event_combo_extract(calendar = dat_calendar,
+#' event1 = c("B", "T"), n_months = 6, event2 = c(1:9),
 #' output = "event2")
-calendar_combo_extract <- function(calendar,
+event_combo_extract <- function(calendar,
                                    event1, n_months, event2,
                                    output = "pattern"){
     #Check validity of inputs
@@ -97,3 +98,4 @@ calendar_combo_extract <- function(calendar,
         return(substr(pattern, 1, 1))
     }
 }
+

@@ -20,7 +20,7 @@ event_count <- function(calendar,
 ){
     # Check input
     if(!is.logical(sequences)){
-        stop("Wrong value for argument lookingfor")
+        stop("Wrong value for argument sequences (TRUE/FALSE)")
     }
     if(is.numeric(event)){
         event <- as.character(event)

@@ -12,19 +12,20 @@
 #' @export
 #'
 #' @examples
+#' dat_calendar <- c("333000BPPP", "333000TPPP000", "012305670")
+#' event_locate(dat_calendar, "P")
+#' event_locate(dat_calendar, "P", sequences = FALSE)
 event_locate <- function(calendar,
                          event,
                          sequences = TRUE,
                          recent_oldest = "recent",
                          start_end = "start",
                          interview = 0
-                         ){
+                         )
     #Check for correct inputs
-    if(length(recent_oldest) != 1 | length(start_end) != 1){
-        stop("recent_oldest and start_end
-             parameters must be of length one")
+    if(!is.logical(sequences)){
+        stop("Wrong value for argument sequences (TRUE/FALSE)")
     }
-
     if(!recent_oldest %in% c("recent", "oldest")){
         stop("recent_oldest must be either 'recent' or 'oldest'")
     }
