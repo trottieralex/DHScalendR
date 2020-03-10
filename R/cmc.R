@@ -29,7 +29,9 @@ cmc_to_Date <- function(x){
 #' cmc_from_Date(as.Date("1963-05-13")) #761
 #'
 cmc_from_Date <- function(x){
-    interval(as.Date("1899-12-01"), x) %/% months(1)
+    return(12 * (as.numeric(strftime(x, "%Y")) - 1900) +
+               as.numeric(strftime(x, "%m"))
+           )
 }
 
 

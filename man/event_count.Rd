@@ -14,7 +14,7 @@ event_count(calendar, event, sequences = TRUE)
 \item{sequences}{look for sequence of event - if FALSE individual events [default: TRUE]}
 }
 \value{
-
+number of time the event occured in the calendar string
 }
 \description{
 Count number of occurences of the event

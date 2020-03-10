@@ -1,11 +1,10 @@
-
 #' Count number of occurences of the event
 #'
 #' @param calendar string(s) of DHS calendar, months in original order (i.e. recent -> older)
 #' @param event code(s) of event of interest (can take regex)
 #' @param sequences look for sequence of event - if FALSE individual events [default: TRUE]
 #'
-#' @return
+#' @return number of time the event occured in the calendar string
 #' @export
 #'
 #' @importFrom stringr str_count
@@ -37,4 +36,3 @@ event_count <- function(calendar,
         str_count(trimws(calendar),
                   event))
 }
-

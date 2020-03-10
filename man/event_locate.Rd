@@ -27,7 +27,7 @@ event_locate(
 \item{interview}{variable of the date of interview [default: 0]}
 }
 \value{
-
+location of the event in the string (recent or older AND start or end)
 }
 \description{
 Get location event in a calendar variable

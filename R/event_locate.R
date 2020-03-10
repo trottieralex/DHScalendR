@@ -8,8 +8,10 @@
 #' @param start_end return location of the start or the end of the event [default: "start"]
 #' @param interview variable of the date of interview [default: 0]
 #'
+#' @return location of the event in the string (most recent or oldest occurence)
+#'
 #' @importFrom stringr str_locate
-#' @return
+#'
 #' @export
 #'
 #' @examples
